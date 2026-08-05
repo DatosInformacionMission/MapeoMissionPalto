@@ -1,6 +1,6 @@
 {
   "name": "Flutter Dev Container",
-  "image": "ghcr.io/cirrusci/flutter:3.24.0",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -9,6 +9,10 @@
       ]
     }
   },
-  "forwardPorts": [8080],
-  "postCreateCommand": "flutter pub get"
+  "containerEnv": {
+    "PATH": "/sdks/flutter/bin:${containerEnv:PATH}"
+  },
+  "onCreateCommand": "sudo mkdir -p /sdks && sudo chown vscode:vscode /sdks && git clone --depth 1 -b stable https://github.com/flutter/flutter.git /sdks/flutter",
+  "postCreateCommand": "flutter pub get",
+  "forwardPorts": [8080]
 }
