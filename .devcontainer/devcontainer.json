@@ -1,6 +1,6 @@
 {
   "name": "Flutter Dev Container",
-  "image": "ghcr.io/cirrusci/flutter:latest",
+  "image": "ghcr.io/cirrusci/flutter:3.24.0",
   "customizations": {
     "vscode": {
       "extensions": [
