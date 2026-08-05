@@ -6,13 +6,16 @@
       "extensions": [
         "Dart-Code.flutter",
         "Dart-Code.dart-code"
-      ]
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit",
+          "source.organizeImports": "always"
+        }
+      }
     }
   },
-  "containerEnv": {
-    "PATH": "/sdks/flutter/bin:${containerEnv:PATH}"
-  },
-  "onCreateCommand": "sudo mkdir -p /sdks && sudo chown vscode:vscode /sdks && git clone --depth 1 -b stable https://github.com/flutter/flutter.git /sdks/flutter",
-  "postCreateCommand": "flutter pub get",
+  "postCreateCommand": "git clone --depth 1 -b stable https://github.com/flutter/flutter.git $HOME/flutter && echo 'export PATH=\"$PATH:$HOME/flutter/bin\"' >> ~/.bashrc && $HOME/flutter/bin/flutter pub get",
   "forwardPorts": [8080]
 }
